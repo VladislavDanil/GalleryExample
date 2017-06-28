@@ -1,4 +1,4 @@
-import React, {PropTypes, Component} from 'react'
+import React, {PropTypes, Component} from 'react';
 
 export default class GalleryItem extends Component {
 
@@ -18,10 +18,14 @@ export default class GalleryItem extends Component {
 
     render() {
         let image = this.props.image;
-        console.log("Draw gallery item");
+        let moveStyle = {
+            transform: 'translate3d(' + image.coordinate[0] + 'px,' + image.coordinate[1] + 'px,0)',
+            transition: 'transform 5s'
+        };
 
         return (
-            <div className="gallery_item" onClick={this.onClick} onContextMenu={this.handleContextMenu}>
+            <div className="gallery_item" style={moveStyle} onClick={this.onClick}
+                 onContextMenu={this.handleContextMenu}>
                 <div className="rating">{image.rating}</div>
                 <img className="image" src={image.src}/>
             </div>

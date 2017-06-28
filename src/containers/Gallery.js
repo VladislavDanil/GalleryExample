@@ -15,9 +15,9 @@ class Gallery extends Component {
 
         console.log(images);
 
-        let items = images.map(function (image, index) {
+        let items = images.map(function (image) {
             return (
-                <GalleryItem key={index} image={image} changeRating={changeRating}/>
+                <GalleryItem key={image.id} image={image} changeRating={changeRating}/>
             )
         });
 

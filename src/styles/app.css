@@ -3,16 +3,24 @@ body {
     color: white;
 }
 
+.gallery_container {
+    width: 1000px;
+}
+
 .gallery_item {
-    position: relative;
-    width: 300px;
-    height: 300px;
+    position: absolute;
+    max-width: 250px;
+    max-height: 250px;
+    width: 30%;
+    height: 30%;
     margin: 10px;
-    float: left;
-    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
 }
 
 .rating {
+    position: absolute;
     height: 30px;
     width: 30px;
     margin: 10px;
@@ -22,13 +30,9 @@ body {
     font-weight: bold;
     background: white;
     color: black;
-    position: absolute;
 }
 
 .image {
-    height: auto;
     width: 100%;
-    vertical-align: middle;
-    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.4);
-    border-radius: 5px;
+    height: 100%;
 }

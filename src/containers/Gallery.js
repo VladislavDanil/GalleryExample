@@ -7,23 +7,21 @@ import * as ratingAction from '../actions/RatingAction'
 
 class Gallery extends Component {
 
-    render() {
-
-        const {changeRating} = this.props.ratingAction;
-
-        const {images} = this.props;
-
-        console.log(images);
-
-        let items = images.map(function (image) {
+    createGalleryItems = (images, changeRating) => {
+        return images.map(function (image) {
             return (
                 <GalleryItem key={image.id} image={image} changeRating={changeRating}/>
             )
         });
+    };
+
+    render() {
+        const {changeRating} = this.props.ratingAction;
+        const {images} = this.props;
 
         return (
             <div className="gallery_container">
-                {items}
+                {this.createGalleryItems(images, changeRating)}
             </div>
         )
     }

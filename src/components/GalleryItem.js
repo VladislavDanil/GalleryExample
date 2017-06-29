@@ -7,6 +7,13 @@ export default class GalleryItem extends Component {
         changeRating: React.PropTypes.func.isRequired
     };
 
+    createMoveStyle = () => {
+        return {
+            transform: 'translate3d(' + this.props.image.coordinate[0] + 'px,' + this.props.image.coordinate[1] + 'px,0)',
+            transition: 'transform 5s'
+        }
+    };
+
     onClick = () => {
         this.props.changeRating(this.props.image.id, 1);
     };
@@ -18,10 +25,7 @@ export default class GalleryItem extends Component {
 
     render() {
         let image = this.props.image;
-        let moveStyle = {
-            transform: 'translate3d(' + image.coordinate[0] + 'px,' + image.coordinate[1] + 'px,0)',
-            transition: 'transform 5s'
-        };
+        let moveStyle = this.createMoveStyle();
 
         return (
             <div className="gallery_item" style={moveStyle} onClick={this.onClick}

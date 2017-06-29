@@ -1,7 +1,7 @@
 {
-  "name": "redux_task",
+  "name": "gallery_task",
   "version": "1.0.0",
-  "description": "Redax task",
+  "description": "Gallery task",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"

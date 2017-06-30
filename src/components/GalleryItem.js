@@ -1,4 +1,5 @@
 import React, {PropTypes, Component} from 'react';
+import ReactDOM from 'react-dom';
 
 export default class GalleryItem extends Component {
 
@@ -12,16 +13,22 @@ export default class GalleryItem extends Component {
         this.img = new Image();
     }
 
-    componentDidMount() {
-        this.img.src = this.props.image.src;
+    animate() {
+        const domNode = ReactDOM.findDOMNode(this);
+        requestAnimationFrame(() => {
+            domNode.style.transform = 'translate(' + this.props.image.coordinate[0] + 'px,' + this.props.image.coordinate[1] + 'px)';
+            domNode.style.transition = 'transform 2s';
+        });
     }
 
-    createMoveStyle = () => {
-        return {
-            transform: 'translate3d(' + this.props.image.coordinate[0] + 'px,' + this.props.image.coordinate[1] + 'px,0)',
-            transition: 'transform 2s'
-        }
-    };
+    componentDidMount() {
+        this.img.src = this.props.image.src;
+        this.animate();
+    }
+
+    componentDidUpdate() {
+        this.animate();
+    }
 
     onClick = () => {
         this.props.changeRating(this.props.image.id, 1);
@@ -36,7 +43,7 @@ export default class GalleryItem extends Component {
         let image = this.props.image;
 
         return (
-            <div className="gallery_item" style={this.createMoveStyle()} onClick={this.onClick}
+            <div className="gallery_item" onClick={this.onClick}
                  onContextMenu={this.handleContextMenu}>
                 <div className="rating">{image.rating}</div>
                 <div className="image" style={{
